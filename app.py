@@ -23,10 +23,10 @@ if st.button("Generate Answer"):
     else:
         api_key = None
 
-try:
-    api_key = st.secrets["GEMINI_API_KEY"]
-except Exception:
-    api_key = os.getenv("GEMINI_API_KEY")
+        try:
+            api_key = st.secrets["GEMINI_API_KEY"]
+        except Exception:
+            api_key = os.getenv("GEMINI_API_KEY")
 
         if not api_key:
             st.error("Gemini API key is not configured.")
@@ -47,7 +47,7 @@ Give:
 """
 
             response = client.models.generate_content(
-                model="gemini-3.8-flash",
+                model="gemini-3.5-flash",
                 contents=prompt
             )
 
