@@ -21,7 +21,12 @@ if st.button("Generate Answer"):
         st.warning("Please enter a question first.")
 
     else:
-        api_key = os.getenv("GEMINI_API_KEY")
+        api_key = None
+
+try:
+    api_key = st.secrets["GEMINI_API_KEY"]
+except Exception:
+    api_key = os.getenv("GEMINI_API_KEY")
 
         if not api_key:
             st.error("Gemini API key is not configured.")
